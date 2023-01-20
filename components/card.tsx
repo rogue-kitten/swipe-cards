@@ -1,5 +1,11 @@
 import { CardProps } from '@/types';
-import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
+import {
+  easeIn,
+  motion,
+  PanInfo,
+  useMotionValue,
+  useTransform,
+} from 'framer-motion';
 import { useState } from 'react';
 
 const Card = ({ data, active, removeCard }: CardProps) => {
@@ -19,16 +25,15 @@ const Card = ({ data, active, removeCard }: CardProps) => {
   ) => {
     if (info.offset.x > 100) {
       setSwipe('right');
-      console.log('You swipped right');
       setExitX(1000);
-      setExitY(1000);
+      setExitY(100);
+      removeCard(data.id, 'right');
     } else if (info.offset.x < -100) {
       setSwipe('left');
       setExitX(-1000);
-      setExitY(1000);
-      console.log('You swipped left');
+      setExitY(100);
+      removeCard(data.id, 'left');
     }
-    removeCard(data.id);
   };
 
   return (
@@ -37,14 +42,14 @@ const Card = ({ data, active, removeCard }: CardProps) => {
         <motion.div
           drag
           dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-          className="text-3xl flex justify-center items-center font-bold w-[300px] h-[400px] rounded-md bg-slate-200 absolute shadow-2xl"
+          className="text-3xl flex justify-center items-center font-bold w-[300px] h-[400px] rounded-lg bg-slate-200 absolute shadow-2xl"
           onDragEnd={dragEnd}
-          initial={{ scale: 0.9, opacity: 0.25 }}
+          initial={{ scale: 0.95, opacity: 0.5 }}
           animate={{
             scale: 1.05,
             opacity: 1,
           }}
-          transition={{ type: 'tween', duration: 0.7 }}
+          transition={{ type: 'tween', duration: 0.3, ease: 'easeIn' }}
           style={{ x, color }}
           exit={{ x: exitX, y: exitY, opacity: 0 }}
         >

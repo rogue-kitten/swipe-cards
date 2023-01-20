@@ -6,5 +6,5 @@ export type CardData = {
 export type CardProps = {
   data: CardData;
   active: boolean;
-  removeCard: (id: number) => void;
+  removeCard: (id: number, action: 'right' | 'left') => void;
 };
