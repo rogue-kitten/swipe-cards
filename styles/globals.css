@@ -31,6 +31,9 @@
 .blur-lines {
   background: rgba(0, 0, 0);
   filter: blur(38px);
+  -webkit-filter: blur(38px);
+  -moz-filter: blur(38px);
+  -ms-filter: blur(38px);
   /* backdrop-filter: blur(25px); */
   /* -webkit-backdrop-filter: blur(25px); */
 }
@@ -40,5 +43,32 @@
   box-shadow: 7px 7px 4px rgba(2, 2, 2, 0.7);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
+  -moz-backdrop-filter: blur(25px);
+  -ms-backdrop-filter: blur(25px);
   border-radius: 20px;
+}
+
+.eclipse {
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 502px;
+  height: 508.21px;
+  background: #00fff0;
+  filter: blur(218px);
+  -webkit-filter: blur(218px);
+  -moz-filter: blur(218px);
+  -ms-filter: blur(218px);
+}
+
+.scrollCards::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }

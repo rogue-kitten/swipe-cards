@@ -2,7 +2,9 @@ import Card from '@/components/card';
 import { CardData } from '@/types';
 import { cardData } from '@/utils/data';
 import { AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { useState } from 'react';
+import Lights from '../public/lights.png';
 
 export default function Home() {
   const [cards, setCards] = useState<CardData[]>(cardData);
@@ -32,11 +34,20 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen flex justify-center items-center text-textGrey bg-bgBlack overflow-hidden">
-      <div className="blur-lines w-full rounded-full h-[200px] top-[313px] absolute z-10" />
-      <div className="w-full flex items-start h-[505px] absolute top-[434px]">
+      <Image
+        src={Lights}
+        fill
+        alt=""
+        style={{
+          objectFit: 'cover',
+        }}
+      />
+      {/* <div className="blur-lines w-full rounded-full h-[200px] top-[313px] absolute z-10" /> */}
+      {/* <div className="eclipse absolute z-10" /> */}
+      {/* <div className="w-full flex items-start h-[505px] absolute top-[434px]">
         <div className="w-1/2 h-full line-gradient-left"></div>
         <div className="w-1/2 h-full line-gradient-right"></div>
-      </div>
+      </div> */}
       <AnimatePresence>
         {cards.length ? (
           cards.map((card) => (
