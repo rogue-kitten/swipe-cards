@@ -42,7 +42,7 @@ const Card = ({ data, active, removeCard }: CardProps) => {
         <motion.div
           drag
           dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-          className="text-3xl flex justify-center items-center font-bold w-[300px] h-[400px] rounded-lg bg-slate-200 absolute shadow-2xl"
+          className="text-3xl flex justify-center items-center font-bold w-[289px] h-[438px] card absolute z-30"
           onDragEnd={dragEnd}
           initial={{ scale: 0.95, opacity: 0.5 }}
           animate={{

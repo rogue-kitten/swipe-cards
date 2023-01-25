@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.line-gradient-left {
+  background: conic-gradient(
+    from 179.86deg at 50% 50%,
+    rgba(0, 137, 129, 0.834706) -23.11deg,
+    rgba(24, 19, 26, 0.13) 66.2deg,
+    rgba(0, 0, 0, 0) 264.9deg,
+    #00fff0 272.38deg,
+    rgba(0, 137, 129, 0.834706) 336.89deg,
+    rgba(24, 19, 26, 0.13) 426.2deg
+  );
+  transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.line-gradient-right {
+  transform: rotate(-180deg);
+  background: conic-gradient(
+    from 179.86deg at 50% 50%,
+    rgba(0, 137, 129, 0.834706) -23.11deg,
+    rgba(24, 19, 26, 0.13) 66.2deg,
+    rgba(0, 0, 0, 0) 264.9deg,
+    #00fff0 272.38deg,
+    rgba(0, 137, 129, 0.834706) 336.89deg,
+    rgba(24, 19, 26, 0.13) 426.2deg
+  );
+}
+
+.blur-lines {
+  background: rgba(0, 0, 0);
+  filter: blur(38px);
+  /* backdrop-filter: blur(25px); */
+  /* -webkit-backdrop-filter: blur(25px); */
+}
+
+.card {
+  background: rgba(2, 2, 2, 0.6);
+  box-shadow: 7px 7px 4px rgba(2, 2, 2, 0.7);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 20px;
+}
