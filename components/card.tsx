@@ -10,29 +10,22 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const Card = ({ data, active, removeCard }: CardProps) => {
-  const [swipe, setSwipe] = useState<'right' | 'left' | 'none'>('none');
   const [exitX, setExitX] = useState(0);
-  const [exitY, setExitY] = useState(0);
 
-  // this is for the colored text animation
-  // const x = useMotionValue(0);
-  // const input = [-200, 0, 200];
-  // const colorOutput = ['rgb(211, 9, 225)', 'rgb(68, 0, 255)', 'rgb(3, 209, 0)'];
-  // const color = useTransform(x, input, colorOutput);
+  const x = useMotionValue(0);
+  const input = [-200, 0, 200];
+  const rotate = useTransform(x, [-200, 200], [-25, 25]);
+  const opacity = useTransform(x, [-200, -125, 0, 125, 200], [0, 1, 1, 1, 0]);
 
   const dragEnd = (
     e: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
     if (info.offset.x > 100) {
-      setSwipe('right');
-      setExitX(1000);
-      setExitY(100);
+      setExitX(200);
       removeCard(data.id, 'right');
     } else if (info.offset.x < -100) {
-      setSwipe('left');
-      setExitX(-1000);
-      setExitY(100);
+      setExitX(-200);
       removeCard(data.id, 'left');
     }
   };
@@ -41,7 +34,7 @@ const Card = ({ data, active, removeCard }: CardProps) => {
     <>
       {active ? (
         <motion.div
-          drag
+          drag="x"
           dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
           className="text-3xl flex justify-center items-center font-bold w-[289px] h-[438px] card absolute z-30"
           onDragEnd={dragEnd}
@@ -50,8 +43,10 @@ const Card = ({ data, active, removeCard }: CardProps) => {
             scale: 1.05,
             opacity: 1,
           }}
+          style={{ x, rotate, opacity }}
           transition={{ type: 'tween', duration: 0.3, ease: 'easeIn' }}
-          exit={{ x: exitX, y: exitY, opacity: 0 }}
+          whileDrag={{ cursor: 'grabbing' }}
+          exit={{ x: exitX }}
         >
           <div className="w-[calc(100%-20px)] m-auto h-[calc(100%-20px)] overflow-y-scroll rounded-[20px] border-2 border-[#9F9F9F80] absolute scrollCards">
             <div className="w-full h-[269px] overflow-hidden rounded-b-xl relative">
