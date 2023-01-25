@@ -3,7 +3,7 @@ import { CardData } from '@/types';
 import { cardData } from '@/utils/data';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import Lights from '../public/lights.png';
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full h-screen flex justify-center items-center text-textGrey bg-bgBlack overflow-hidden">
+    <div className="w-full h-screen flex justify-center items-center text-textGrey bg-bgBlack overflow-clip">
       <Image
         src={Lights}
         fill

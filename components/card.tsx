@@ -8,6 +8,7 @@ import {
 } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import SwipeButton from './swipeButtons';
 
 const Card = ({ data, active, removeCard }: CardProps) => {
   const [exitX, setExitX] = useState(0);
@@ -32,6 +33,7 @@ const Card = ({ data, active, removeCard }: CardProps) => {
 
   return (
     <>
+      <SwipeButton exit={setExitX} removeCard={removeCard} id={data.id} />
       {active ? (
         <motion.div
           drag="x"
