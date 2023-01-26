@@ -38,7 +38,7 @@ const Card = ({ data, active, removeCard }: CardProps) => {
         <motion.div
           drag="x"
           dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-          className="text-3xl flex justify-center items-center font-bold w-[289px] h-[438px] card absolute z-30"
+          className="card absolute z-30 flex h-[438px] w-[289px] items-center justify-center self-center text-3xl font-bold"
           onDragEnd={dragEnd}
           initial={{ scale: 0.95, opacity: 0.5 }}
           animate={{
@@ -50,8 +50,8 @@ const Card = ({ data, active, removeCard }: CardProps) => {
           whileDrag={{ cursor: 'grabbing' }}
           exit={{ x: exitX }}
         >
-          <div className="w-[calc(100%-20px)] m-auto h-[calc(100%-20px)] overflow-y-scroll rounded-[20px] border-2 border-[#9F9F9F80] absolute scrollCards">
-            <div className="w-full h-[269px] overflow-hidden rounded-b-xl relative">
+          <div className="scrollCards absolute m-auto h-[calc(100%-20px)] w-[calc(100%-20px)] overflow-y-scroll rounded-[20px] border-2 border-[#9F9F9F80]">
+            <div className="relative h-[269px] w-full overflow-hidden rounded-b-xl">
               <Image
                 src={data.src}
                 fill
@@ -61,22 +61,22 @@ const Card = ({ data, active, removeCard }: CardProps) => {
                 }}
               />
             </div>
-            <div className="flex justify-between items-center text-textGrey font-medium font-sans text-2xl mt-6 px-4">
+            <div className="mt-6 flex items-center justify-between px-4 font-sans text-2xl font-medium text-textGrey">
               <p>{data.name}</p>
               <p>{data.age}</p>
             </div>
-            <p className="font-sans text-textGrey px-4 mt-3 font-medium text-lg">
+            <p className="mt-3 px-4 font-sans text-lg font-medium text-textGrey">
               {data.bio}
             </p>
-            <div className="flex gap-1 font-normal text-base px-4 mt-3">
+            <div className="mt-3 flex gap-1 px-4 text-base font-normal">
               {data.genre.map((item, idx) => (
                 <p key={idx} className="rounded-[7px] bg-[#00423E] px-4 py-2">
                   {item}
                 </p>
               ))}
             </div>
-            <p className="mt-5 text-xl font-medium px-4">Top Tracks</p>
-            <div className="grid grid-cols-2 gap-4 px-4 mt-3 mb-4">
+            <p className="mt-5 px-4 text-xl font-medium">Top Tracks</p>
+            <div className="mt-3 mb-4 grid grid-cols-2 gap-4 px-4">
               {data.tracks.map((track, id) => {
                 return (
                   <div key={id}>
@@ -87,10 +87,10 @@ const Card = ({ data, active, removeCard }: CardProps) => {
                       alt=""
                       className="rounded-lg"
                     />
-                    <p className="mt-2 ml-1 text-textGrey text-sm font-medium">
+                    <p className="mt-2 ml-1 text-sm font-medium text-textGrey">
                       {track.name}
                     </p>
-                    <p className="ml-1 text-textGrey text-xs font-normal">
+                    <p className="ml-1 text-xs font-normal text-textGrey">
                       {track.artist}
                     </p>
                   </div>

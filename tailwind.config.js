@@ -20,6 +20,10 @@ module.exports = {
         sans: ['var(--font-baloo)'],
         poppins: ['Poppins', 'sans-serif'],
       },
+      backgroundImage: {
+        'gradient-conic':
+          'conic-gradient(var(--conic-position), var(--tw-gradient-stops))',
+      },
     },
     screens: {
       xs: '480px',
