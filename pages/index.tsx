@@ -33,15 +33,15 @@ export default function Home() {
   ];
 
   return (
-    <div className="w-full h-screen flex justify-center items-center text-textGrey bg-bgBlack overflow-clip">
-      <Image
-        src={Lights}
-        fill
-        alt=""
-        style={{
-          objectFit: 'cover',
-        }}
-      />
+    <div className="relative flex h-screen w-full items-center justify-center overflow-clip bg-bgBlack text-textGrey">
+      <div className="absolute bottom-0 h-[50%] w-screen scale-125 sm:h-[80%] sm:scale-110 md:scale-100">
+        <Image
+          src={Lights}
+          fill
+          alt=""
+          className="relative -mt-6 h-auto w-[100%] sm:mt-1"
+        />
+      </div>
       <AnimatePresence>
         {cards.length ? (
           cards.map((card) => (
@@ -53,7 +53,7 @@ export default function Home() {
             />
           ))
         ) : (
-          <h2 className="text-2xl z-10 text-center font-bold text-textGrey ">
+          <h2 className="absolute z-10 text-center text-2xl font-bold text-textGrey ">
             Excessive swiping can be injurious to health!
             <br />
             Come back tomorrow for more
